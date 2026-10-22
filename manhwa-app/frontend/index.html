@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manhwa Translation Engine</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Inter:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><h1>Manhwa Translation Engine</h1><p>Drop raw Korean scans, get clean English pages. Claude reads, translates and typesets each speech bubble.</p></header>
+<main>
+<section>
+  <div class="card">
+    <div class="drop" id="drop">Drop Korean scans here<br><small>or click to choose (PNG, JPG, WebP)</small></div>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+    <label for="tone">Translation style</label>
+    <select id="tone"><option value="natural, fluent English that reads like a published webtoon localisation">Natural localisation</option><option value="faithful and fairly literal, preserving honorific nuance (e.g. hyung, sunbae-nim)">Literal, keep honorifics</option><option value="casual and punchy, suited to action-heavy scenes">Casual / punchy</option></select>
+    <label for="gloss">Glossary / character names (optional)</label>
+    <textarea id="gloss" rows="3" placeholder="김서준 = Seojun&#10;헌터 = Hunter"></textarea>
+    <label><input type="checkbox" id="sfx"> Also typeset sound effects</label>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="p" id="go" disabled>Translate all pages</button><button id="stop" hidden>Stop</button>
+    </div>
+    <div class="prog"><i id="bar"></i></div>
+    <div class="msg" id="status"></div>
+  </div>
+  <div class="card" style="margin-top:12px"><div id="pages"><div class="msg">No pages yet.</div></div></div>
+</section>
+<section class="card">
+  <div class="bar">
+    <button id="tg">Show original</button><button id="dl" disabled>Download page (PNG)</button><button id="dlall" disabled>Download all</button>
+  </div>
+  <div class="stage" id="stage"><div class="empty">Your translated page appears here.</div></div>
+</section>
+<section class="card">
+  <strong>Detected text</strong><div class="msg">Edit any translation and the page updates. Untick a line to leave the original text in place.</div>
+  <div class="list" id="regs"></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
